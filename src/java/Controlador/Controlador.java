@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.ConexionMongo;
 import Modelo.Estudiante;
 import Modelo.EstudianteDAO;
 import java.io.IOException;
@@ -84,6 +85,7 @@ public class Controlador extends HttpServlet {
               
               List<Estudiante>datos = dao.listar();
               System.out.println(datos.get(0).getNombre());
+              ConexionMongo conexion = new ConexionMongo();
               request.setAttribute("datos", datos);
               request.getRequestDispatcher("/index.jsp").forward(request, response);
               break;
