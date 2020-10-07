@@ -21,19 +21,25 @@ public class ConexionMongo {
     
     DB db;
     DBCollection estudiantes;
+    String dataBaseName = "prueba";
+    String dataBaseCollection = "estudiantes";
     public ConexionMongo() {
-        try {
-            
+       
+    }
+    
+    public DB connexionMongo(){
+        
+         try {
            Mongo mongo = new Mongo("LocalHost",27017);
-           db = mongo.getDB("prueba");
-           estudiantes = db.getCollection("estudiantes");
-           DBCursor  cursor = estudiantes.find();
-           while(cursor.hasNext()){
-               System.out.println(cursor.next());
-           }
+           db = mongo.getDB(dataBaseName);
+           return db;
+           
         } catch (UnknownHostException ex) {
             Logger.getLogger(ConexionMongo.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
+    
+    
     
 }

@@ -8,6 +8,7 @@ package Controlador;
 import Modelo.ConexionMongo;
 import Modelo.Estudiante;
 import Modelo.EstudianteDAO;
+import Modelo.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -82,13 +83,17 @@ public class Controlador extends HttpServlet {
         System.out.println("test");
       switch(accion){
           case "Listar":
-              
               List<Estudiante>datos = dao.listar();
               System.out.println(datos.get(0).getNombre());
               ConexionMongo conexion = new ConexionMongo();
               request.setAttribute("datos", datos);
               request.getRequestDispatcher("/index.jsp").forward(request, response);
               break;
+          case "ListarProductos":
+              List<Producto>listaProductos = dao.listar();
+              request.setAttribute("datos", listaProductos);
+              request.getRequestDispatcher("/index.jsp").forward(request, response);
+              
           default:
               throw new AssertionError();
       }

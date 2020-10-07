@@ -5,8 +5,7 @@
  */
 package Modelo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -17,10 +16,10 @@ import java.util.List;
  * @author Diego
  */
 public class EstudianteDAO {
-    PreparedStatement ps;
+
     ResultSet rs;
     Conexion c = new Conexion();
-    Connection con;
+
     
     public List listar() {
         List<Estudiante>lista =  new ArrayList<>();
